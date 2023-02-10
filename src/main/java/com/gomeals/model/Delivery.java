@@ -1,8 +1,6 @@
 package com.gomeals.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.sql.Date;
 
@@ -11,6 +9,7 @@ import java.sql.Date;
 public class Delivery {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int delivery_id;
     private Date delivery_date;
     private String delivery_meal;

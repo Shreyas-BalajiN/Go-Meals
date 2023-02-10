@@ -1,16 +1,16 @@
 package com.gomeals.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.hibernate.type.descriptor.jdbc.TinyIntJdbcType;
 
 import java.sql.Date;
 
 @Entity
+@Table(name = "polling")
 public class Polling {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int poll_id;
     private Date poll_date;
     private String vote;
