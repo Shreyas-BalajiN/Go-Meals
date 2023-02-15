@@ -10,50 +10,85 @@ public class Delivery {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int delivery_id;
-    private Date delivery_date;
-    private String delivery_meal;
-    private String order_status;
+    @Column(name = "delivery_id")
+    private int deliveryId;
+    @Column(name = "delivery_date")
+    private Date deliveryDate;
+    @Column(name = "delivery_meal")
+    private String deliveryMeal;
+    @Column(name = "order_status")
+    private String orderStatus;
+    @Column(name = "sup_id")
+    private int supId;
+    @Column(name = "cust_id")
+    private int custId;
+
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "sup_id")
+//    private Supplier supplier;
+//
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "cust_id")
+//    private Customer customer;
 
     public Delivery() {
     }
 
-    public Delivery(int delivery_id, Date delivery_date, String delivery_meal, String order_status) {
-        this.delivery_id = delivery_id;
-        this.delivery_date = delivery_date;
-        this.delivery_meal = delivery_meal;
-        this.order_status = order_status;
+    public Delivery(int deliveryId, Date deliveryDate, String deliveryMeal, String orderStatus, int supId, int custId) {
+        this.deliveryId = deliveryId;
+        this.deliveryDate = deliveryDate;
+        this.deliveryMeal = deliveryMeal;
+        this.orderStatus = orderStatus;
+        this.supId = supId;
+        this.custId = custId;
     }
 
-    public int getDelivery_id() {
-        return delivery_id;
+    public int getDeliveryId() {
+        return deliveryId;
     }
 
-    public void setDelivery_id(int delivery_id) {
-        this.delivery_id = delivery_id;
+    public void setDeliveryId(int deliveryId) {
+        this.deliveryId = deliveryId;
     }
 
-    public Date getDelivery_date() {
-        return delivery_date;
+    public Date getDeliveryDate() {
+        return deliveryDate;
     }
 
-    public void setDelivery_date(Date delivery_date) {
-        this.delivery_date = delivery_date;
+    public void setDeliveryDate(Date deliveryDate) {
+        this.deliveryDate = deliveryDate;
     }
 
-    public String getDelivery_meal() {
-        return delivery_meal;
+    public String getDeliveryMeal() {
+        return deliveryMeal;
     }
 
-    public void setDelivery_meal(String delivery_meal) {
-        this.delivery_meal = delivery_meal;
+    public void setDeliveryMeal(String deliveryMeal) {
+        this.deliveryMeal = deliveryMeal;
     }
 
-    public String getOrder_status() {
-        return order_status;
+    public String getOrderStatus() {
+        return orderStatus;
     }
 
-    public void setOrder_status(String order_status) {
-        this.order_status = order_status;
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
     }
+
+    public int getSupId() {
+        return supId;
+    }
+
+    public void setSupId(int supId) {
+        this.supId = supId;
+    }
+
+    public int getCustId() {
+        return custId;
+    }
+
+    public void setCustId(int custId) {
+        this.custId = custId;
+    }
+
 }
