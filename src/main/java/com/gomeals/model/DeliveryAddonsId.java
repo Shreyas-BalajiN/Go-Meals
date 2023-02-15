@@ -9,49 +9,48 @@ import java.io.Serializable;
 
 @Embeddable
 public class DeliveryAddonsId implements Serializable {
-   // @Column (name="cust_id")
-   // private int customerId;
-    private int cust_id;
+    @Column (name="cust_id")
+    private int customerId;
 
- //   @Column (name="addon_id")
-    private int addon_id;
 
-  //  @Column (name="delivery_id")
-    private int delivery_id;
-    //private int deliveryId;
+    @Column (name="addon_id")
+    private int addonId;
+
+
+    @Column (name="delivery_id")
+    private int deliveryId;
 
 
     public DeliveryAddonsId(){
 
     }
     public DeliveryAddonsId(int customerId,int addonId,int deliveryId){
-        this.cust_id=customerId;
-        this.addon_id=addonId;
-        this.delivery_id=deliveryId;
-
+        this.customerId=customerId;
+        this.addonId=addonId;
+        this.deliveryId=deliveryId;
     }
 
-    public int getCust_id() {
-        return cust_id;
+    public int getCustomerId() {
+        return customerId;
     }
 
-    public void setCust_id(int cust_id) {
-        this.cust_id = cust_id;
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
-    public int getAddon_id() {
-        return addon_id;
+    public int getAddonId() {
+        return addonId;
     }
 
-    public void setAddon_id(int addon_id) {
-        this.addon_id = addon_id;
+    public void setAddonId(int addonId) {
+        this.addonId = addonId;
     }
 
-    public int getDelivery_id() {
-        return delivery_id;
+    public int getDeliveryId() {
+        return deliveryId;
     }
 
-    public void setDelivery_id(int delivery_id) {
-        this.delivery_id = delivery_id;
+    public void setDeliveryId(int deliveryId) {
+        this.deliveryId = deliveryId;
     }
 }

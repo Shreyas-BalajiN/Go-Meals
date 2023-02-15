@@ -6,55 +6,49 @@ import jakarta.persistence.*;
 @Table(name = "delivery_addons")
 @IdClass(DeliveryAddonsId.class)
 public class DeliveryAddons {
-
-    /*
-    @EmbeddedId
-    private DeliveryAddonsId deliveryAddonsId;*/
-
     @Id
-    private int cust_id;
-  //  private int custommerId;
+    @Column (name="cust_id")
+    private int customerId;
     @Id
-    private int addon_id;
-   // private int addonId;
+    @Column (name="addon_id")
+    private int addonId;
     @Id
-    private int delivery_id;
-    //private int deliveryId;
+    @Column (name="delivery_id")
+    private int deliveryId;
     private int quantity;
-
 
     public DeliveryAddons(){
         quantity = 0;
     }
     public DeliveryAddons(int cust_id, int addon_id, int delivery_id,int quantity){
-        this.cust_id = cust_id;
-        this.addon_id = addon_id;
-        this.delivery_id=delivery_id;
+        this.customerId = cust_id;
+        this.addonId = addon_id;
+        this.deliveryId=delivery_id;
         this.quantity = quantity;
     }
 
-    public int getCust_id() {
-        return cust_id;
+    public int getCustomerId() {
+        return customerId;
     }
 
-    public void setCust_id(int cust_id) {
-        this.cust_id = cust_id;
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
-    public int getAddon_id() {
-        return addon_id;
+    public int getAddonId() {
+        return addonId;
     }
 
-    public void setAddon_id(int addon_id) {
-        this.addon_id = addon_id;
+    public void setAddonId(int addonId) {
+        this.addonId = addonId;
     }
 
-    public int getDelivery_id() {
-        return delivery_id;
+    public int getDeliveryId() {
+        return deliveryId;
     }
 
-    public void setDelivery_id(int delivery_id) {
-        this.delivery_id = delivery_id;
+    public void setDeliveryId(int deliveryId) {
+        this.deliveryId = deliveryId;
     }
 
     public int getQuantity() {
