@@ -6,4 +6,5 @@ public interface CustomerService {
     Customer createCustomer(Customer customer);
 
     Customer getCustomerById(int id);
+
 }

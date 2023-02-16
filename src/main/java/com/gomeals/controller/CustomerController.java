@@ -9,13 +9,17 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
+
+
     @Autowired
     CustomerService CustomerService;
+    @CrossOrigin
 
     @GetMapping("/get/{id}")
     public Customer getCustomerById(@PathVariable("id") int id) {
         return CustomerService.getCustomerById(id);
     }
+    @CrossOrigin
 
     @PostMapping("/create")
     public Customer createCustomer(@RequestBody Customer Customer) {
