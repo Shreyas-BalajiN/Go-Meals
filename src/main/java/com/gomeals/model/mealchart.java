@@ -6,7 +6,7 @@ import java.util.Date;
 @Entity
 @Table(name="meal_chart")
 public class mealchart {
-    @Id
+
     private String day;
     private String item1;
     private String item2;
@@ -16,6 +16,7 @@ public class mealchart {
     @Column(name = "special_date")
     private Date specialDate;
     @Column(name = "sup_id")
+    @Id
     private long supId;
 
     public mealchart(String day, String item1, String item2, String item3, String item4, String item5, Date special_date, long sup_id) {

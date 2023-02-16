@@ -1,12 +1,12 @@
 package com.gomeals.service.implementation;
 import com.gomeals.repository.supplierRepository;
 import com.gomeals.model.supplier;
+import com.gomeals.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-
-public class supplierServiceImplementation {
+public class supplierServiceImplementation implements SupplierService {
 
     @Autowired
     supplierRepository supplierRepository;

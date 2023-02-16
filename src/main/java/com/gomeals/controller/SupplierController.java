@@ -1,13 +1,14 @@
 package com.gomeals.controller;
 import com.gomeals.model.supplier;
-import com.gomeals.service.supplierService;
+import com.gomeals.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/supplier")
-public class suppliercontroller {
-    supplierService supplierService;
+public class SupplierController {
+    @Autowired
+    SupplierService supplierService;
 
     @PostMapping("/create")
     public supplier registerSupplier(@RequestBody supplier supplier) {

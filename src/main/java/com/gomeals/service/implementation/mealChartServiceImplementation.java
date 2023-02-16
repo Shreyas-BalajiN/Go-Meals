@@ -15,9 +15,9 @@ public class mealChartServiceImplementation implements mealChartService {
         return mealChart;
     }
     @Override
-    public String addMealChart(mealchart mealChart){
+    public mealchart addMealChart(mealchart mealChart){
         mealchartRepository.save(mealChart);
-        return "Meal Chart saved";
+        return mealChart;
     }
     @Override
     public String updateMealChart(mealchart mealChart){

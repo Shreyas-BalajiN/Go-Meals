@@ -13,8 +13,8 @@ public class mealchartcontroller {
     public mealchart getMealChart(@PathVariable int id){
         return mealChartService.getMealChart(id);
     }
-    @PostMapping ("/save")
-    public String addMealChart(mealchart mealChart){
+    @PostMapping ("/create")
+    public mealchart addMealChart(@RequestBody mealchart mealChart){
         return mealChartService.addMealChart(mealChart);
     }
     @PutMapping("/update")
