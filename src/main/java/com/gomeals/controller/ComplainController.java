@@ -17,26 +17,41 @@ public class ComplainController {
     ComplainService complainService;
 
     @PostMapping("/create")
-    public Complain createComplain(@RequestBody Complain complain) {
-        return complainService.createComplain(complain);
+    public ResponseEntity<Complain> createComplain(@RequestBody Complain complain) {
+        return new ResponseEntity<>(complainService.createComplain(complain), HttpStatus.CREATED);
     }
     @GetMapping("/get/{id}")
-    public Complain getComplainById(@PathVariable("id") Integer complainId) {
-        return complainService.getComplainById(complainId);
+    public ResponseEntity<Complain> getComplainById(@PathVariable("id") Integer complainId) {
+        return new ResponseEntity<>(complainService.getComplainById(complainId), HttpStatus.OK);
     }
 
     @GetMapping("/get/all")
-    public List<Complain> getAllComplains() {
-        return complainService.getAllComplains();
+    public ResponseEntity<List<Complain>> getAllComplains() {
+        return new ResponseEntity<>(complainService.getAllComplains(), HttpStatus.OK);
+    }
+    @GetMapping("/get/all-customer/{id}")
+    public ResponseEntity<List<Complain>> getAllCustomerComplains(@PathVariable("id") Integer customerId) {
+        return new ResponseEntity<>(complainService.getComplainsByCustomerId(customerId), HttpStatus.OK);
+    }
+    @GetMapping("/get/all-supplier/{id}")
+    public ResponseEntity<List<Complain>> getAllSupplierComplains(@PathVariable("id") Integer supplierId) {
+        return new ResponseEntity<>(complainService.getComplainsBySupplierId(supplierId), HttpStatus.OK);
+    }
+
+    @GetMapping("/all-supplier-customer")
+    public ResponseEntity<List<Complain>> getAllComplainsByCustomerAndSupplier(@RequestParam Integer customerId, Integer supplierId) {
+        return new ResponseEntity<>(complainService.getComplainsByCustomerIdAndSupplierId(customerId,supplierId), HttpStatus.OK);
     }
 
     @PutMapping("/update")
-    public Complain updateComplain(@RequestBody Complain complain){
-        return complainService.updateComplain(complain);
+    public ResponseEntity<Complain> updateComplain(@RequestBody Complain complain){
+        return new ResponseEntity<>(complainService.updateComplain(complain), HttpStatus.OK);
     }
+
     @DeleteMapping("/delete/{id}")
-    public void deleteComplain(@PathVariable("id") Integer complainId){
+    public ResponseEntity<String> deleteComplain(@PathVariable("id") Integer complainId){
         complainService.deleteComplain(complainId);
+        return ResponseEntity.status(HttpStatus.OK).body("Complain was successfully deleted.\n");
     }
 
 
