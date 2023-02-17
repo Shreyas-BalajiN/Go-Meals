@@ -53,10 +53,4 @@ public class ComplainController {
         complainService.deleteComplain(complainId);
         return ResponseEntity.status(HttpStatus.OK).body("Complain was successfully deleted.\n");
     }
-
-
-
-
-
-
 }

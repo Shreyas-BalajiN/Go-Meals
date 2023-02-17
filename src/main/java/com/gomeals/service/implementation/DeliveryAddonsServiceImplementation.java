@@ -27,7 +27,8 @@ public class DeliveryAddonsServiceImplementation implements DeliveryAddonsServic
     @Override
     public List<DeliveryAddons> getDeliveryAddonsByDeliveryId(Integer deliveryId) {
         List<DeliveryAddons> deliveryAddons = new ArrayList<>();
-        deliveryAddonsRepository.findAll().forEach(deliveryAddon -> deliveryAddons.add(deliveryAddon));
+        deliveryAddonsRepository.findDeliveryAddonsByDeliveryId(deliveryId).forEach(deliveryAddon ->
+                deliveryAddons.add(deliveryAddon));
         return deliveryAddons;
     }
     @Override
