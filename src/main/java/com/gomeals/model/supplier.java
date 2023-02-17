@@ -1,5 +1,9 @@
 package com.gomeals.model;
 import jakarta.persistence.*;
+import com.gomeals.model.mealchart;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="supplier")
@@ -18,17 +22,22 @@ public class supplier {
     private String supEmail;
     @Column(name = "govt_issued_id")
     private String govtIssuedId;
+    @Column(name="sup_password")
+    private String password;
 
+    @OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL, orphanRemoval = true)
+    List<mealchart> supIdList= new ArrayList<>();
     public supplier() {
     }
 
-    public supplier(int sup_id, String sup_address, String sup_contact_number, String sup_name, String sup_email, String govt_issued_id) {
+    public supplier(int sup_id, String sup_address, String sup_contact_number, String sup_name, String sup_email, String govt_issued_id,String sup_password) {
         this.supId = sup_id;
         this.supAddress = sup_address;
         this.supContactNumber = sup_contact_number;
         this.supName = sup_name;
         this.supEmail = sup_email;
         this.govtIssuedId = govt_issued_id;
+        this.password =sup_password;
     }
 
     public int getSupId() {
@@ -77,5 +86,12 @@ public class supplier {
 
     public void setGovtIssuedId(String govt_issued_id) {
         this.govtIssuedId = govt_issued_id;
+    }
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

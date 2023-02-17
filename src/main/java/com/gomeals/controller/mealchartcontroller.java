@@ -10,19 +10,19 @@ public class mealchartcontroller {
     @Autowired
     mealChartService mealChartService;
     @GetMapping ("/get/{id}")
-    public mealchart getMealChart(@PathVariable int id){
+    public mealchart getMealChart(@PathVariable String id){
         return mealChartService.getMealChart(id);
     }
     @PostMapping ("/create")
     public mealchart addMealChart(@RequestBody mealchart mealChart){
         return mealChartService.addMealChart(mealChart);
     }
-    @PutMapping("/update")
-    public String updateMealChart(mealchart mealChart){
-        return mealChartService.updateMealChart(mealChart);
-    }
+//    @PutMapping("/update")
+//    public String updateMealChart(mealchart mealChart){
+//        return mealChartService.updateMealChart(mealChart);
+//    }
     @DeleteMapping("/delete/{id}")
-    public String deleteMealChart(@PathVariable int id){
+    public String deleteMealChart(@PathVariable String id){
         return mealChartService.deleteMealChart(id);
     }
 

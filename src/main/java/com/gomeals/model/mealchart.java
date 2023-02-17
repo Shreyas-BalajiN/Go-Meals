@@ -1,12 +1,12 @@
 package com.gomeals.model;
 import jakarta.persistence.*;
-
+import com.gomeals.model.supplier;
 import java.util.Date;
 
 @Entity
 @Table(name="meal_chart")
 public class mealchart {
-
+    @Id
     private String day;
     private String item1;
     private String item2;
@@ -15,9 +15,12 @@ public class mealchart {
     private String item5;
     @Column(name = "special_date")
     private Date specialDate;
-    @Column(name = "sup_id")
-    @Id
-    private long supId;
+//    @Column(name = "sup_id")
+//    private long supId;
+
+    @ManyToOne
+    @JoinColumn(name = "supId")
+    private supplier supplier;
 
     public mealchart(String day, String item1, String item2, String item3, String item4, String item5, Date special_date, long sup_id) {
         this.day = day;
@@ -27,7 +30,7 @@ public class mealchart {
         this.item4 = item4;
         this.item5 = item5;
         this.specialDate = special_date;
-        this.supId =sup_id;
+//        this.supId =sup_id;
     }
 
     public mealchart() {
@@ -91,11 +94,11 @@ public class mealchart {
         return day;
     }
 
-    public long getSupId() {
-        return supId;
-    }
-
-    public void setSupId(long sup_id) {
-        this.supId = sup_id;
-    }
+//    public long getSupId() {
+//        return supId;
+//    }
+//
+//    public void setSupId(long sup_id) {
+//        this.supId = sup_id;
+//    }
 }

@@ -21,7 +21,7 @@ public class SupplierController {
     }
 
     @PutMapping("/update")
-    public String updateSupplier(supplier supplier) {
+    public supplier updateSupplier(@RequestBody supplier supplier) {
         return supplierService.updateSupplier(supplier);
     }
 

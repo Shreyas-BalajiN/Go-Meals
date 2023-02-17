@@ -4,8 +4,8 @@ import org.springframework.stereotype.Service;
 
 
 public interface mealChartService {
-    public mealchart getMealChart(int id);
+    public mealchart getMealChart(String id);
     public mealchart addMealChart(mealchart mealChart);
-    public String updateMealChart(mealchart mealChart);
-    public String deleteMealChart(int id);
+//    public String updateMealChart(mealchart mealChart);
+    public String deleteMealChart(String id);
 }
