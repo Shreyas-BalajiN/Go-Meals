@@ -1,13 +1,16 @@
 package com.gomeals.model;
 import jakarta.persistence.*;
 import com.gomeals.model.supplier;
+
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name="meal_chart")
 public class mealchart {
-    @Id
-    private String day;
+
+    @EmbeddedId
+    private mealchartID id;
     private String item1;
     private String item2;
     private String item3;
@@ -15,22 +18,20 @@ public class mealchart {
     private String item5;
     @Column(name = "special_date")
     private Date specialDate;
-//    @Column(name = "sup_id")
-//    private long supId;
 
-    @ManyToOne
-    @JoinColumn(name = "supId")
-    private supplier supplier;
+//    @ManyToOne
+//    @JoinColumn(name = "supId")
+//    private supplier supplier;
 
-    public mealchart(String day, String item1, String item2, String item3, String item4, String item5, Date special_date, long sup_id) {
-        this.day = day;
+    public mealchart(String item1, String item2, String item3, String item4, String item5, Date special_date, mealchartID id) {
+
         this.item1 = item1;
         this.item2 = item2;
         this.item3 = item3;
         this.item4 = item4;
         this.item5 = item5;
         this.specialDate = special_date;
-//        this.supId =sup_id;
+        this.id = id;
     }
 
     public mealchart() {
@@ -86,19 +87,13 @@ public class mealchart {
         this.specialDate = special_date;
     }
 
-    public void setDay(String day) {
-        this.day = day;
+    public mealchartID getId() {
+        return id;
     }
 
-    public String getDay() {
-        return day;
+    public void setId(mealchartID id) {
+        this.id = id;
     }
-
-//    public long getSupId() {
-//        return supId;
-//    }
-//
-//    public void setSupId(long sup_id) {
-//        this.supId = sup_id;
-//    }
 }
+
+

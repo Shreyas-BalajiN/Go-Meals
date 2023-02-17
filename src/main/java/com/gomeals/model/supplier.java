@@ -25,8 +25,8 @@ public class supplier {
     @Column(name="sup_password")
     private String password;
 
-    @OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL, orphanRemoval = true)
-    List<mealchart> supIdList= new ArrayList<>();
+//    @OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL, orphanRemoval = true)
+//    List<mealchart> supIdList= new ArrayList<>();
     public supplier() {
     }
 

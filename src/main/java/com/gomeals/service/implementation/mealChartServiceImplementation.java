@@ -4,35 +4,38 @@ import com.gomeals.service.mealChartService;
 import com.gomeals.repository.mealchartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.gomeals.model.mealchartID;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class mealChartServiceImplementation implements mealChartService {
     @Autowired
     mealchartRepository mealchartRepository;
     @Override
-    public mealchart getMealChart(String id) {
-        mealchart mealChart=mealchartRepository.findById(id).orElse(null);
-        return mealChart;
+    public mealchart getMealChart(mealchartID id) {
+        return mealchartRepository.findById(id).orElse(null);
+
     }
     @Override
     public mealchart addMealChart(mealchart mealChart){
         mealchartRepository.save(mealChart);
         return mealChart;
     }
-//    @Override
-//    public String updateMealChart(mealchart mealChart){
-//        mealchart m=mealchartRepository.findById((int) mealChart.getSupId()).orElse(null);
-//        m.setDay(mealChart.getDay());
-//        m.setItem1(mealChart.getItem1());
-//        m.setItem2(mealChart.getItem2());
-//        m.setItem3(mealChart.getItem3());
-//        m.setItem4(mealChart.getItem4());
-//        m.setItem5(mealChart.getItem5());
-//        m.setSpecialDate(mealChart.getSpecialDate());
-//        return "Meal Chart Updated";
-//    }
     @Override
-    public String deleteMealChart(String id){
+    public mealchart updateMealChart( @RequestBody mealchart mealChart){
+        mealchart m=mealchartRepository.findById(mealChart.getId()).orElse(null);
+        m.setId(mealChart.getId());
+        m.setItem1(mealChart.getItem1());
+        m.setItem2(mealChart.getItem2());
+        m.setItem3(mealChart.getItem3());
+        m.setItem4(mealChart.getItem4());
+        m.setItem5(mealChart.getItem5());
+        m.setSpecialDate(mealChart.getSpecialDate());
+        mealchartRepository.save(m);
+        return m;
+    }
+    @Override
+    public String deleteMealChart(mealchartID id){
         mealchartRepository.deleteById(id);
         return "Meal Chart Deleted";
     }
