@@ -20,8 +20,8 @@ public class ComplainServiceImplementation implements ComplainService {
     }
 
     @Override
-    public Complain getComplainById(Integer id){
-        Complain complain = complainRepository.findById(id).orElse(null);
+    public Complain getComplainById(Integer complainId){
+        Complain complain = complainRepository.findById(complainId).orElse(null);
         return complain;
     }
 
@@ -38,7 +38,7 @@ public class ComplainServiceImplementation implements ComplainService {
     }
 
     @Override
-    public void deleteComplain(Integer id) {
-        complainRepository.deleteById(id);
+    public void deleteComplain(Integer complainId) {
+        complainRepository.deleteById(complainId);
     }
 }

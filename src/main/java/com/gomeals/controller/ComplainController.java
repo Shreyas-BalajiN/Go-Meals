@@ -21,8 +21,8 @@ public class ComplainController {
         return complainService.createComplain(complain);
     }
     @GetMapping("/get/{id}")
-    public Complain getComplainById(@PathVariable("id") Integer id) {
-        return complainService.getComplainById(id);
+    public Complain getComplainById(@PathVariable("id") Integer complainId) {
+        return complainService.getComplainById(complainId);
     }
 
     @GetMapping("/get/all")
@@ -35,8 +35,8 @@ public class ComplainController {
         return complainService.updateComplain(complain);
     }
     @DeleteMapping("/delete/{id}")
-    public void deleteComplain(@PathVariable("id") Integer id){
-        complainService.deleteComplain(id);
+    public void deleteComplain(@PathVariable("id") Integer complainId){
+        complainService.deleteComplain(complainId);
     }
 
 
