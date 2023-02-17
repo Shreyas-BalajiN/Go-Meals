@@ -8,54 +8,54 @@ import jakarta.persistence.*;
 public class DeliveryAddons {
     @Id
     @Column (name="cust_id")
-    private int customerId;
+    private Integer customerId;
     @Id
     @Column (name="addon_id")
-    private int addonId;
+    private Integer addonId;
     @Id
     @Column (name="delivery_id")
-    private int deliveryId;
-    private int quantity;
+    private Integer deliveryId;
+    private Integer quantity;
 
     public DeliveryAddons(){
         quantity = 0;
     }
-    public DeliveryAddons(int cust_id, int addon_id, int delivery_id,int quantity){
+    public DeliveryAddons(Integer cust_id, Integer addon_id, Integer delivery_id,Integer quantity){
         this.customerId = cust_id;
         this.addonId = addon_id;
         this.deliveryId=delivery_id;
         this.quantity = quantity;
     }
 
-    public int getCustomerId() {
+    public Integer getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
 
-    public int getAddonId() {
+    public Integer getAddonId() {
         return addonId;
     }
 
-    public void setAddonId(int addonId) {
+    public void setAddonId(Integer addonId) {
         this.addonId = addonId;
     }
 
-    public int getDeliveryId() {
+    public Integer getDeliveryId() {
         return deliveryId;
     }
 
-    public void setDeliveryId(int deliveryId) {
+    public void setDeliveryId(Integer deliveryId) {
         this.deliveryId = deliveryId;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 }
