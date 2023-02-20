@@ -11,22 +11,27 @@ public class Polling {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int poll_id;
-    private Date poll_date;
+    @Column(name = "poll_id")
+    private int pollId;
+    @Column(name = "poll_date")
+    private Date pollDate;
     private String vote;
     private String item1;
     private String item2;
     private String item3;
     private String item4;
     private String item5;
-    private TinyIntJdbcType status;
+    @Column(name = "sup_id")
+    private int supId;
+    @Column(columnDefinition = "TINYINT", length = 4)
+    private boolean status;
 
     public Polling() {
     }
 
-    public Polling(int poll_id, Date poll_date, String vote, String item1, String item2, String item3, String item4, String item5, TinyIntJdbcType status) {
-        this.poll_id = poll_id;
-        this.poll_date = poll_date;
+    public Polling(int pollId, Date pollDate, String vote, String item1, String item2, String item3, String item4, String item5, boolean status, int supId) {
+        this.pollId = pollId;
+        this.pollDate = pollDate;
         this.vote = vote;
         this.item1 = item1;
         this.item2 = item2;
@@ -34,22 +39,23 @@ public class Polling {
         this.item4 = item4;
         this.item5 = item5;
         this.status = status;
+        this.supId = supId;
     }
 
-    public int getPoll_id() {
-        return poll_id;
+    public int getPollId() {
+        return pollId;
     }
 
-    public void setPoll_id(int poll_id) {
-        this.poll_id = poll_id;
+    public void setPollId(int pollId) {
+        this.pollId = pollId;
     }
 
-    public Date getPoll_date() {
-        return poll_date;
+    public Date getPollDate() {
+        return pollDate;
     }
 
-    public void setPoll_date(Date poll_date) {
-        this.poll_date = poll_date;
+    public void setPollDate(Date pollDate) {
+        this.pollDate = pollDate;
     }
 
     public String getVote() {
@@ -100,12 +106,20 @@ public class Polling {
         this.item5 = item5;
     }
 
-    public TinyIntJdbcType getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
-    public void setStatus(TinyIntJdbcType status) {
+    public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public int getSupId() {
+        return supId;
+    }
+
+    public void setSupId(int supId) {
+        this.supId = supId;
     }
 
 }
