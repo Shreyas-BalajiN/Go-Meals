@@ -1,14 +1,26 @@
 package com.gomeals.model;
 
 import jakarta.persistence.*;
+import java.io.Serializable;
+
 
 @Entity
+@IdClass(SupplierReview.SupplierReviewKey.class)
 @Table(name = "supplier_review")
 public class SupplierReview {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int supplierReviewid;
+    @ManyToOne
+    @JoinColumn(name = "cust_id")
+    private Integer customerId;
+
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "sup_id")
+    private Integer supplierId;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    private int supplierReviewid;
     private String comment;
 
     private String supplier_rating;
@@ -17,17 +29,27 @@ public class SupplierReview {
 
     }
 
-    public int getSupplierReviewid() {
-        return supplierReviewid;
-    }
-
-    public void setSupplierReviewid(int supplierReviewid) {
-        this.supplierReviewid = supplierReviewid;
-    }
-
-    public SupplierReview(String comment, String supplier_rating){
+    public SupplierReview(Integer customerId, Integer supplierId, String comment, String supplier_rating) {
+        this.customerId = customerId;
+        this.supplierId = supplierId;
         this.comment = comment;
         this.supplier_rating = supplier_rating;
+    }
+
+    public Integer getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
+    }
+
+    public Integer getSupplierId() {
+        return supplierId;
+    }
+
+    public void setSupplierId(Integer supplierId) {
+        this.supplierId = supplierId;
     }
 
     public String getComment() {
@@ -49,6 +71,35 @@ public class SupplierReview {
     @Override
     public String toString() {
         return super.toString();
+    }
+
+    @Embeddable
+    public static class SupplierReviewKey implements Serializable {
+
+        @Column(name = "cust_id")
+        private Integer customerId;
+
+        @Column(name = "supp_id")
+        private Integer supplierId;
+
+        public Integer getCustomerId() {
+            return customerId;
+        }
+
+        public void setCustomerId(Integer customerId) {
+            this.customerId = customerId;
+        }
+
+
+
+        public Integer getSupplierId() {
+            return supplierId;
+        }
+
+        public void setSupplierId(Integer supplierId) {
+            this.supplierId = supplierId;
+        }
+
     }
 }
 

@@ -1,13 +1,9 @@
 package com.gomeals.model;
 import jakarta.persistence.*;
-import com.gomeals.model.mealchart;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name="supplier")
-public class supplier {
+public class Supplier {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "sup_id")
@@ -27,10 +23,10 @@ public class supplier {
 
 //    @OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL, orphanRemoval = true)
 //    List<mealchart> supIdList= new ArrayList<>();
-    public supplier() {
+    public Supplier() {
     }
 
-    public supplier(int sup_id, String sup_address, String sup_contact_number, String sup_name, String sup_email, String govt_issued_id,String sup_password) {
+    public Supplier(int sup_id, String sup_address, String sup_contact_number, String sup_name, String sup_email, String govt_issued_id, String sup_password) {
         this.supId = sup_id;
         this.supAddress = sup_address;
         this.supContactNumber = sup_contact_number;

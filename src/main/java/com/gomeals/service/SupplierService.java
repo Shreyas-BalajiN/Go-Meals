@@ -1,11 +1,11 @@
 package com.gomeals.service;
-import com.gomeals.model.supplier;
+import com.gomeals.model.Supplier;
 
 
 public interface SupplierService {
-    public supplier getSupplierDetails(int id);
-    public supplier registerSupplier(supplier supplier);
-    public supplier updateSupplier(supplier supplier);
+    public Supplier getSupplierDetails(int id);
+    public Supplier registerSupplier(Supplier supplier);
+    public Supplier updateSupplier(Supplier supplier);
     public String deleteSupplier(int id);
 
 }

@@ -1,5 +1,5 @@
 package com.gomeals.controller;
-import com.gomeals.model.supplier;
+import com.gomeals.model.Supplier;
 import com.gomeals.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,17 +11,17 @@ public class SupplierController {
     SupplierService supplierService;
 
     @PostMapping("/create")
-    public supplier registerSupplier(@RequestBody supplier supplier) {
+    public Supplier registerSupplier(@RequestBody Supplier supplier) {
         return supplierService.registerSupplier(supplier);
     }
 
     @GetMapping("/get/{id}")
-    public supplier getSupplierDetails(@PathVariable int id) {
+    public Supplier getSupplierDetails(@PathVariable int id) {
         return supplierService.getSupplierDetails(id);
     }
 
     @PutMapping("/update")
-    public supplier updateSupplier(@RequestBody supplier supplier) {
+    public Supplier updateSupplier(@RequestBody Supplier supplier) {
         return supplierService.updateSupplier(supplier);
     }
 
