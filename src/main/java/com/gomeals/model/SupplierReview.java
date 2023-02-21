@@ -10,30 +10,27 @@ import java.io.Serializable;
 public class SupplierReview {
 
     @Id
-    @ManyToOne
-    @JoinColumn(name = "cust_id")
+    @Column (name="cust_id")
     private Integer customerId;
 
     @Id
-    @ManyToOne
-    @JoinColumn(name = "sup_id")
+    @Column (name="sup_id")
     private Integer supplierId;
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    private int supplierReviewid;
     private String comment;
 
     private String supplier_rating;
+    private String supplier_reviewcol;
 
     public SupplierReview(){
 
     }
 
-    public SupplierReview(Integer customerId, Integer supplierId, String comment, String supplier_rating) {
+    public SupplierReview(Integer customerId, Integer supplierId, String comment, String supplier_rating,String supplier_reviewcol) {
         this.customerId = customerId;
         this.supplierId = supplierId;
         this.comment = comment;
         this.supplier_rating = supplier_rating;
+        this.supplier_reviewcol=supplier_reviewcol;
     }
 
     public Integer getCustomerId() {
@@ -68,9 +65,12 @@ public class SupplierReview {
         this.supplier_rating = supplier_rating;
     }
 
-    @Override
-    public String toString() {
-        return super.toString();
+    public String getSupplier_reviewcol() {
+        return supplier_reviewcol;
+    }
+
+    public void setSupplier_reviewcol(String supplier_reviewcol) {
+        this.supplier_reviewcol = supplier_reviewcol;
     }
 
     @Embeddable
@@ -79,7 +79,7 @@ public class SupplierReview {
         @Column(name = "cust_id")
         private Integer customerId;
 
-        @Column(name = "supp_id")
+        @Column(name = "sup_id")
         private Integer supplierId;
 
         public Integer getCustomerId() {
