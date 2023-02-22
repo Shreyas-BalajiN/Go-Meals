@@ -1,8 +1,6 @@
 package com.gomeals.model;
 import jakarta.persistence.*;
-import com.gomeals.model.supplier;
 
-import java.io.Serializable;
 import java.util.Date;
 
 @Entity
