@@ -15,11 +15,13 @@ public class Customer {
     private String cust_card_details;
     private String cust_contact_number;
 
+    private String cust_password;
+
     public Customer(){
 
     }
 
-    public Customer(int cust_id, String cust_fname, String cust_lname, String cust_address, String cust_email, String cust_card_details, String cust_contact_number) {
+    public Customer(int cust_id, String cust_fname, String cust_lname, String cust_address, String cust_email, String cust_card_details, String cust_contact_number, String cust_password) {
         this.cust_id = cust_id;
         this.cust_fname = cust_fname;
         this.cust_lname = cust_lname;
@@ -27,6 +29,7 @@ public class Customer {
         this.cust_email = cust_email;
         this.cust_card_details = cust_card_details;
         this.cust_contact_number = cust_contact_number;
+        this.cust_password = cust_password;
     }
 
     public int getCust_id() {
@@ -85,5 +88,11 @@ public class Customer {
         this.cust_contact_number = cust_contact_number;
     }
 
+    public String getCust_password() {
+        return cust_password;
+    }
 
+    public void setCust_password(String cust_password) {
+        this.cust_password = cust_password;
+    }
 }
