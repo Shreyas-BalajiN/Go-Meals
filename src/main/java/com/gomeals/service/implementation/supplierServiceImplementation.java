@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class supplierServiceImplementation implements SupplierService {
 
@@ -14,6 +17,12 @@ public class supplierServiceImplementation implements SupplierService {
     public Supplier getSupplierDetails(int id){
         Supplier supplier= supplierRepository.findById(id).orElse(null);
         return supplier;
+    }
+
+    public List<Supplier> getAllSuppliers(){
+        List<Supplier> suppliers = new ArrayList<>();
+        supplierRepository.findAll().forEach(supplier -> suppliers.add(supplier));
+        return suppliers;
     }
 
     public Supplier registerSupplier(Supplier supplier){
