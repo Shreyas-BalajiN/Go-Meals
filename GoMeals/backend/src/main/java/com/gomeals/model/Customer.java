@@ -1,4 +1,5 @@
 package com.gomeals.model;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -17,7 +18,7 @@ public class Customer {
 
     private String cust_password;
 
-    public Customer(){
+    public Customer() {
 
     }
 

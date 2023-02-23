@@ -6,9 +6,10 @@ import com.gomeals.repository.CustomerRepository;
 import com.gomeals.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 @Service
-public class CustomerServiceImplementation implements CustomerService{
-@Autowired
+public class CustomerServiceImplementation implements CustomerService {
+    @Autowired
     CustomerRepository customerRepository;
 
     public CustomerServiceImplementation() {
@@ -18,6 +19,9 @@ public class CustomerServiceImplementation implements CustomerService{
     @Override
     public Customer createCustomer(Customer customer) {
 
+        if (customerRepository.findByEmail(customer.getCust_email()) != null) {
+            throw new RuntimeException("Email already exists");
+        }
         return customerRepository.save(customer);
     }
 
