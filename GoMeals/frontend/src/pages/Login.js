@@ -10,7 +10,12 @@ function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const user = {
+      cust_fname: "N/A",
+      cust_lname: "N/A",
+      cust_address: "N/A",
       cust_email: cust_email,
+      cust_card_details: "Default fake param",
+      cust_contact_number: "N/A",
       cust_password: cust_password,
     };
     axios

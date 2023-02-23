@@ -24,7 +24,20 @@ public class CustomerServiceImplementation implements CustomerService {
         }
         return customerRepository.save(customer);
     }
-
+    public String loginCustomer(Customer customer){
+        if (customerRepository.findByEmail(customer.getCust_email()) == null) {
+            throw new RuntimeException("User not Registered");
+        }
+        else{
+           String password = customerRepository.passwordMatch(customer.getCust_email());
+           if(password==customer.getCust_password()){
+               return "Login Successful";
+           }
+           else{
+               return "Incorrect Password";
+           }
+        }
+    }
     @Override
     public Customer getCustomerById(int id) {
         Customer customer = customerRepository.findById(id).orElse(null);
