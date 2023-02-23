@@ -7,6 +7,8 @@ import com.gomeals.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 @Service
 public class CustomerServiceImplementation implements CustomerService {
     @Autowired
@@ -30,7 +32,7 @@ public class CustomerServiceImplementation implements CustomerService {
         }
         else{
            String password = customerRepository.passwordMatch(customer.getCust_email());
-           if(password==customer.getCust_password()){
+           if(Objects.equals(password, customer.getCust_password())){
                return "Login Successful";
            }
            else{

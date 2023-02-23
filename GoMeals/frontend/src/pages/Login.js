@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [cust_email, setEmail] = useState("");
   const [cust_password, setCustPassword] = useState("");
-
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const user = {
@@ -22,9 +23,13 @@ function Login() {
       .post("http://localhost:8080/customer/login", user)
       .then((response) => {
         console.log(response.data);
+        alert("login successful");
+        navigate("/dashboard");
+        
       })
       .catch((error) => {
         console.log(error);
+        alert("login failed");
       });
   };
 
