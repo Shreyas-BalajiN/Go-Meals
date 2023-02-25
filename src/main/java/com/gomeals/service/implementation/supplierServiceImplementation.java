@@ -1,4 +1,7 @@
 package com.gomeals.service.implementation;
+import com.gomeals.model.Customer;
+import com.gomeals.repository.CustomerRepository;
+import com.gomeals.repository.SubscriptionRepository;
 import com.gomeals.repository.supplierRepository;
 import com.gomeals.model.Supplier;
 import com.gomeals.service.SupplierService;
@@ -8,14 +11,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class supplierServiceImplementation implements SupplierService {
 
     @Autowired
     supplierRepository supplierRepository;
+
+    @Autowired
+    SubscriptionRepository subscriptionRepository;
+
+    @Autowired
+    CustomerRepository customerRepository;
+
+
     public Supplier getSupplierDetails(int id){
-        Supplier supplier= supplierRepository.findById(id).orElse(null);
+        Supplier supplier = supplierRepository.findById(id).orElse(null);
+        if(supplier != null){
+            List<Customer> customers = new ArrayList<>();
+            subscriptionRepository.findSubscriptionsBySupplierIdAndActiveStatus(id,1).forEach(
+                    subscribedCustomer -> {
+                        Optional<Customer> customer = customerRepository.findById(subscribedCustomer.getCustomerId());
+                        customers.add( unwrapCustomer(customer));
+                    });
+            supplier.setCustomers(customers);
+        }
         return supplier;
     }
 
@@ -45,6 +66,10 @@ public class supplierServiceImplementation implements SupplierService {
     public String deleteSupplier(int id){
         supplierRepository.deleteById(id);
         return "Supplier deleted";
+    }
+
+    private static Customer unwrapCustomer(Optional<Customer> entity){
+        return entity.orElse(null);
     }
 
 }
