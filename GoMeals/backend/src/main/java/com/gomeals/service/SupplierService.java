@@ -7,5 +7,6 @@ public interface SupplierService {
     public Supplier registerSupplier(Supplier supplier);
     public Supplier updateSupplier(Supplier supplier);
     public String deleteSupplier(int id);
+    public  String loginSupplier(Supplier supplier);
 
 }

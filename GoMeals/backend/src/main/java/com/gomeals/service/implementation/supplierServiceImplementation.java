@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.Objects;
+
 @Service
 public class supplierServiceImplementation implements SupplierService {
 
@@ -38,4 +40,18 @@ public class supplierServiceImplementation implements SupplierService {
         return "Supplier deleted";
     }
 
+    public String loginSupplier(Supplier supplier){
+        if (supplierRepository.findSupplierByEmail(supplier.getSupEmail()) == null) {
+            throw new RuntimeException("Supplier not Registered");
+        }
+        else{
+            String password = supplierRepository.supplierPasswordMatch(supplier.getSupEmail());
+            if(Objects.equals(password, supplier.getPassword())){
+                return "Login Successful";
+            }
+            else{
+                return "Incorrect Password";
+            }
+        }
+    }
 }

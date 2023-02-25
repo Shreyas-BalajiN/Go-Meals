@@ -26,6 +26,7 @@ public class CustomerServiceImplementation implements CustomerService {
         }
         return customerRepository.save(customer);
     }
+    @Override
     public String loginCustomer(Customer customer){
         if (customerRepository.findByEmail(customer.getCust_email()) == null) {
             throw new RuntimeException("User not Registered");
