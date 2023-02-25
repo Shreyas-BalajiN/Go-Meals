@@ -1,9 +1,10 @@
 package com.gomeals.controller;
 
 import com.gomeals.model.Delivery;
-import com.gomeals.repository.DeliveryRepository;
 import com.gomeals.service.DeliveryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,6 +34,16 @@ public class DeliveryController {
     @PutMapping("/update")
     public Delivery updateDelivery(@RequestBody Delivery delivery) {
         return deliveryService.updateDelivery(delivery);
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Delivery> updateStatusToCancelledById(@PathVariable("id") int deliveryId) {
+        Delivery deliveryToCancel = deliveryService.updateStatusToCancelledById(deliveryId);
+        if(deliveryToCancel == null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }else{
+            return new ResponseEntity<>(deliveryToCancel,HttpStatus.OK);
+        }
     }
 
     @DeleteMapping("/delete/{id}")

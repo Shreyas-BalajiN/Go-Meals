@@ -9,5 +9,9 @@ import java.util.List;
 public interface SubscriptionRepository extends CrudRepository<Subscriptions, Integer>{
     List<Subscriptions> findSubscriptionsBySupplierIdAndActiveStatus(Integer supplierId, Integer activeStatus);
     List<Subscriptions> findSubscriptionsByCustomerIdAndActiveStatus(Integer customerId, Integer activeStatus);
+    Subscriptions findSubscriptionsByCustomerIdAndSupplierIdAndActiveStatus(Integer customerId, Integer supplierId,
+                                                                            Integer activeStatus);
+
+
 
 }
