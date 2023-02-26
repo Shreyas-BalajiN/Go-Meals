@@ -19,7 +19,7 @@ function Login() {
             .then((response) => {
                 console.log(response.data);
                 alert("login successful");
-                navigate("/dashboard");
+                navigate("/supplierDashboard");
 
             })
             .catch((error) => {

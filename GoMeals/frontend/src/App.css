@@ -27,7 +27,17 @@
 .App-link {
   color: #61dafb;
 }
-
+.mechco{
+  border-left: 100px;
+  margin-left: 250px;
+  margin-top: 74px;
+  width: 70%;
+  align-items: flex-start;
+  background-color: beige;
+}
+.elements{
+  float:left;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

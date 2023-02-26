@@ -7,6 +7,7 @@ import com.gomeals.model.mealchartID;
 
 @RestController
 @RequestMapping("/meal_chart")
+@CrossOrigin(origins = "http://localhost:3000")
 public class mealchartcontroller {
     @Autowired
     mealChartService mealChartService;
