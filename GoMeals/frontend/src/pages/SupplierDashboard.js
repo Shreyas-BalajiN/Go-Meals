@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Button,Card,Col,FormGroup,Container,Row,Form} from 'react-bootstrap';
+import {Button,Card,Col,FormGroup,Container,Row,Form,Nav,Navbar} from 'react-bootstrap';
 import axios from "axios";
 import{Label,Input} from 'reactstrap';
 
@@ -9,7 +9,7 @@ export default function SupplierDashboard() {
         showmealchart(true);
     };
     const handleCreate=()=> {
-        const mealChart = {
+        const mealChart = [{
                     id: {
                  day: "monday",
                 supId: 2
@@ -21,7 +21,79 @@ export default function SupplierDashboard() {
             item5: document.getElementById("monday5").value,
             specialDate: "2022-02-01"
 
-        };
+        },
+            {id: {
+            day: "tuesday",
+                supId: 2
+        },
+        item1: document.getElementById("tuesday1").value,
+            item2: document.getElementById("tuesday2").value,
+            item3: document.getElementById("tuesday3").value,
+            item4: document.getElementById("tuesday4").value,
+            item5: document.getElementById("tuesday5").value,
+            specialDate: "2022-02-01"
+
+    },
+            {id: {
+                    day: "wednesday",
+                    supId: 2
+                },
+                item1: document.getElementById("wednesday1").value,
+                item2: document.getElementById("wednesday2").value,
+                item3: document.getElementById("wednesday3").value,
+                item4: document.getElementById("wednesday4").value,
+                item5: document.getElementById("wednesday5").value,
+                specialDate: "2022-02-01"
+
+            },
+            {id: {
+                    day: "thursday",
+                    supId: 2
+                },
+                item1: document.getElementById("thursday1").value,
+                item2: document.getElementById("thursday2").value,
+                item3: document.getElementById("thursday3").value,
+                item4: document.getElementById("thursday4").value,
+                item5: document.getElementById("thursday5").value,
+                specialDate: "2022-02-01"
+
+            },
+            {id: {
+                    day: "friday",
+                    supId: 2
+                },
+                item1: document.getElementById("friday1").value,
+                item2: document.getElementById("friday2").value,
+                item3: document.getElementById("friday3").value,
+                item4: document.getElementById("friday4").value,
+                item5: document.getElementById("friday5").value,
+                specialDate: "2022-02-01"
+
+            },
+            {id: {
+                    day: "saturday",
+                    supId: 2
+                },
+                item1: document.getElementById("saturday1").value,
+                item2: document.getElementById("saturday2").value,
+                item3: document.getElementById("saturday3").value,
+                item4: document.getElementById("saturday4").value,
+                item5: document.getElementById("saturday5").value,
+                specialDate: "2022-02-01"
+
+            },
+            {id: {
+                    day: "sunday",
+                    supId: 2
+                },
+                item1: document.getElementById("sunday1").value,
+                item2: document.getElementById("sunday2").value,
+                item3: document.getElementById("sunday3").value,
+                item4: document.getElementById("sunday4").value,
+                item5: document.getElementById("sunday5").value,
+                specialDate: "2022-02-01"
+
+            },]
 // item1:
         axios
             .post("http://localhost:8080/meal_chart/create", mealChart)
@@ -39,14 +111,23 @@ export default function SupplierDashboard() {
 
   return (
     <div>
+        <Navbar bg="primary" variant="light">
+            <Container>
+                <Navbar.Brand href="#home">Go Meals</Navbar.Brand>
+                <Nav className="me-auto">
+                    <Nav.Link href="#home">Home</Nav.Link>
+                    <Nav.Link href="#features">Profile</Nav.Link>
+                    <Nav.Link href="#pricing">Customers</Nav.Link>
+                </Nav>
+            </Container>
+        </Navbar>
         <br/>
-        <br/>
-    <h2 >SupplierDashboard</h2>
-        <br/>
+    <h2 >Welcome Supplier</h2>
         <br/>
     <Button variant="outline-primary" onClick={handleClick}>Create Meal Chart</Button>{' '}
         {mealchart &&<div><Card className="mechco">
             <Card.Body>
+                <h3>Meal Plan Details</h3>
                 <table>
                     <tr>
                         <td>Monday:</td>
@@ -111,11 +192,16 @@ export default function SupplierDashboard() {
                         <td><input type="text" id="sunday5" /></td>
                     </tr>
                 </table>
+                <br/>
+                <Button variant="outline-primary" onClick={handleCreate}>Upload</Button>{' '}
             </Card.Body>
+
         </Card>
         <br/>
-            <br/>
-            <button onClick={handleCreate}>Create</button>
+        <br/>
+            <Navbar bg="primary" variant="light" className="justify-content-center align-items-center">
+                <h3>©Go Meals</h3>
+            </Navbar>
         </div>
 
         }

@@ -27,16 +27,20 @@
 .App-link {
   color: #61dafb;
 }
+.body{
+  background-color: #FEDEFF;
+}
 .mechco{
   border-left: 100px;
   margin-left: 250px;
-  margin-top: 74px;
+  margin-top: 50px;
   width: 70%;
   align-items: flex-start;
-  background-color: beige;
+  background-color: #EEE9DA;
+  box-shadow: 10px 10px dimgrey;
 }
-.elements{
-  float:left;
+h3{
+  align-content: end;
 }
 @keyframes App-logo-spin {
   from {
