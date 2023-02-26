@@ -3,6 +3,7 @@ import "./App.css";
 import Register from "./pages/Register";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
+import SupplierRegister from "./pages/SupplierRegister"
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/SupplierRegister" element={<SupplierRegister />} />
           <Route path="/" element={<Register />} />
         </Routes>
       </Router>
