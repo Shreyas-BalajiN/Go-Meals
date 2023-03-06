@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class ComplainServiceImplementation implements ComplainService {
@@ -59,8 +60,14 @@ public class ComplainServiceImplementation implements ComplainService {
         return complainRepository.save(complain);
     }
 
+    @Transactional
     @Override
-    public void deleteComplain(Integer complainId) {
-        complainRepository.deleteById(complainId);
+    public void deleteComplain(Integer complainId){ //throws NoSuchElementException {
+        if(complainRepository.findById(complainId).isPresent()){
+            complainRepository.deleteById(complainId);
+        }else{
+
+           // throw new NoSuchElementException("Complain not found with id: "+complainId );
+        }
     }
 }

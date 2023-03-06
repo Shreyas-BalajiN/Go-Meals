@@ -1,6 +1,10 @@
 package com.gomeals.model;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 @Entity
 @Table(name = "customer")
 public class Customer {
@@ -16,6 +20,11 @@ public class Customer {
     private String cust_contact_number;
 
     private String cust_password;
+    @Transient
+    private List<Supplier> suppliers = new ArrayList<>();
+    @Transient
+    private List<Subscriptions> subscriptions = new ArrayList<>();
+
 
     public Customer(){
 
@@ -94,5 +103,21 @@ public class Customer {
 
     public void setCust_password(String cust_password) {
         this.cust_password = cust_password;
+    }
+
+    public List<Supplier> getSuppliers() {
+        return suppliers;
+    }
+
+    public void setSuppliers(List<Supplier> suppliers) {
+        this.suppliers = suppliers;
+    }
+
+    public List<Subscriptions> getSubscriptions() {
+        return subscriptions;
+    }
+
+    public void setSubscriptions(List<Subscriptions> subscriptions) {
+        this.subscriptions = subscriptions;
     }
 }

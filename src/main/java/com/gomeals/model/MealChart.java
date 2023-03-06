@@ -5,10 +5,10 @@ import java.util.Date;
 
 @Entity
 @Table(name="meal_chart")
-public class mealchart {
+public class MealChart {
 
     @EmbeddedId
-    private mealchartID id;
+    private MealChartID id;
     private String item1;
     private String item2;
     private String item3;
@@ -21,7 +21,7 @@ public class mealchart {
 //    @JoinColumn(name = "supId")
 //    private supplier supplier;
 
-    public mealchart(String item1, String item2, String item3, String item4, String item5, Date special_date, mealchartID id) {
+    public MealChart(String item1, String item2, String item3, String item4, String item5, Date special_date, MealChartID id) {
 
         this.item1 = item1;
         this.item2 = item2;
@@ -32,7 +32,7 @@ public class mealchart {
         this.id = id;
     }
 
-    public mealchart() {
+    public MealChart() {
 
     }
 
@@ -85,11 +85,11 @@ public class mealchart {
         this.specialDate = special_date;
     }
 
-    public mealchartID getId() {
+    public MealChartID getId() {
         return id;
     }
 
-    public void setId(mealchartID id) {
+    public void setId(MealChartID id) {
         this.id = id;
     }
 }

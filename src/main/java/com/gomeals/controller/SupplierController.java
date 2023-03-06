@@ -2,7 +2,11 @@ package com.gomeals.controller;
 import com.gomeals.model.Supplier;
 import com.gomeals.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/supplier")
@@ -18,6 +22,11 @@ public class SupplierController {
     @GetMapping("/get/{id}")
     public Supplier getSupplierDetails(@PathVariable int id) {
         return supplierService.getSupplierDetails(id);
+    }
+
+    @GetMapping("/get/all")
+    public ResponseEntity<List<Supplier>> getAllSuppliers() {
+        return new ResponseEntity<>(supplierService.getAllSuppliers(), HttpStatus.OK);
     }
 
     @PutMapping("/update")

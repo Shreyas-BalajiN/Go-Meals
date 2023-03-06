@@ -1,29 +1,29 @@
 package com.gomeals.service.implementation;
-import com.gomeals.model.mealchart;
-import com.gomeals.service.mealChartService;
-import com.gomeals.repository.mealchartRepository;
+import com.gomeals.model.MealChart;
+import com.gomeals.service.MealChartService;
+import com.gomeals.repository.MealChartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.gomeals.model.mealchartID;
+import com.gomeals.model.MealChartID;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
-public class mealChartServiceImplementation implements mealChartService {
+public class MealChartServiceImplementation implements MealChartService {
     @Autowired
-    mealchartRepository mealchartRepository;
+    MealChartRepository mealchartRepository;
     @Override
-    public mealchart getMealChart(mealchartID id) {
+    public MealChart getMealChart(MealChartID id) {
         return mealchartRepository.findById(id).orElse(null);
 
     }
     @Override
-    public mealchart addMealChart(mealchart mealChart){
+    public MealChart addMealChart(MealChart mealChart){
         mealchartRepository.save(mealChart);
         return mealChart;
     }
     @Override
-    public mealchart updateMealChart( @RequestBody mealchart mealChart){
-        mealchart m=mealchartRepository.findById(mealChart.getId()).orElse(null);
+    public MealChart updateMealChart(@RequestBody MealChart mealChart){
+        MealChart m=mealchartRepository.findById(mealChart.getId()).orElse(null);
         m.setId(mealChart.getId());
         m.setItem1(mealChart.getItem1());
         m.setItem2(mealChart.getItem2());
@@ -35,7 +35,7 @@ public class mealChartServiceImplementation implements mealChartService {
         return m;
     }
     @Override
-    public String deleteMealChart(mealchartID id){
+    public String deleteMealChart(MealChartID id){
         mealchartRepository.deleteById(id);
         return "Meal Chart Deleted";
     }
