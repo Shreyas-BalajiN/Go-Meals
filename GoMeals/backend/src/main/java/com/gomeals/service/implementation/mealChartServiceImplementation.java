@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import com.gomeals.model.mealchartID;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
+
 @Service
 public class mealChartServiceImplementation implements mealChartService {
     @Autowired
@@ -17,9 +19,9 @@ public class mealChartServiceImplementation implements mealChartService {
 
     }
     @Override
-    public mealchart addMealChart(mealchart mealChart){
-        mealchartRepository.save(mealChart);
-        return mealChart;
+    public String addMealChart(List<mealchart> mealChart){
+        mealchartRepository.saveAll(mealChart);
+        return "Objects saved";
     }
     @Override
     public mealchart updateMealChart( @RequestBody mealchart mealChart){

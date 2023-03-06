@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.*;
 import com.gomeals.service.mealChartService;
 import com.gomeals.model.mealchartID;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/meal_chart")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -16,7 +18,7 @@ public class mealchartcontroller {
         return mealChartService.getMealChart(id);
     }
     @PostMapping ("/create")
-    public mealchart addMealChart(@RequestBody mealchart mealChart){
+    public String addMealChart(@RequestBody List<mealchart> mealChart){
         return mealChartService.addMealChart(mealChart);
     }
     @PutMapping("/update")

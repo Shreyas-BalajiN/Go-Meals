@@ -93,7 +93,8 @@ export default function SupplierDashboard() {
                 item5: document.getElementById("sunday5").value,
                 specialDate: "2022-02-01"
 
-            },]
+            },
+            ]
 // item1:
         axios
             .post("http://localhost:8080/meal_chart/create", mealChart)
