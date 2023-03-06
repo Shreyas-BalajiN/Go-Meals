@@ -6,18 +6,18 @@ import jakarta.persistence.Embeddable;
 import java.io.Serializable;
 
 @Embeddable
-public class mealchartID implements Serializable {
+public class MealChartID implements Serializable {
     @Column(name="day")
  private String day;
     @Column(name="sup_id")
  private int supId;
 
-    public mealchartID(String day, int supId) {
+    public MealChartID(String day, int supId) {
         this.day = day;
         this.supId = supId;
     }
 
-    public mealchartID() {
+    public MealChartID() {
 
     }
 
