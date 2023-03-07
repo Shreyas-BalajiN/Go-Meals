@@ -1,6 +1,6 @@
 package com.gomeals.service.implementation;
 
-//import com.gomeals.constants.DeliveryStatus;
+import com.gomeals.constants.DeliveryStatus;
 import com.gomeals.model.Delivery;
 import com.gomeals.model.Subscriptions;
 import com.gomeals.repository.DeliveryRepository;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-//import static com.gomeals.constants.DeliveryStatus.*;
+import static com.gomeals.constants.DeliveryStatus.*;
 
 @Service
 public class DeliveryServiceImplementation implements DeliveryService {
@@ -71,12 +71,10 @@ public class DeliveryServiceImplementation implements DeliveryService {
             return null;
         }
 
-
-
-//        if (!IN_PROGRESS.getStatusName().equals(delivery.getOrderStatus())) {
-//            System.out.println("Can't cancel an order that it's not in progress.");
-//            return null;
-//        }
+        if (!IN_PROGRESS.getStatusName().equals(delivery.getOrderStatus())) {
+            System.out.println("Can't cancel an order that it's not in progress.");
+            return null;
+        }
         Subscriptions subscription = subscriptionRepository.findSubscriptionsByCustomerIdAndSupplierIdAndActiveStatus(
                 delivery.getCustId(), delivery.getSupId(), 1);
         if (subscription == null) {
@@ -85,7 +83,7 @@ public class DeliveryServiceImplementation implements DeliveryService {
         }
         // If the user has an active subscription with that supplier
         // Set delivery status to cancelled
-        //delivery.setOrderStatus(cancelled.getStatusName());
+        delivery.setOrderStatus(cancelled.getStatusName());
         // Update the remaining meals on the subscription table
         subscription.setMeals_remaining(subscription.getMeals_remaining()  +1);
 
