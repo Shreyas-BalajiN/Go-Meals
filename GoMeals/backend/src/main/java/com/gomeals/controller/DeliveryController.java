@@ -1,19 +1,23 @@
 package com.gomeals.controller;
 
 import com.gomeals.model.Delivery;
-import com.gomeals.repository.DeliveryRepository;
 import com.gomeals.service.DeliveryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
 @RequestMapping("/delivery")
 public class DeliveryController {
 
-    @Autowired
-    DeliveryService deliveryService;
+    private final DeliveryService deliveryService;
+
+    public DeliveryController(DeliveryService deliveryService) {
+        this.deliveryService = deliveryService;
+    }
+
 
     @GetMapping("/get/{id}")
     public Delivery getDeliveryById(@PathVariable("id") int id) {
@@ -33,6 +37,17 @@ public class DeliveryController {
     @PutMapping("/update")
     public Delivery updateDelivery(@RequestBody Delivery delivery) {
         return deliveryService.updateDelivery(delivery);
+    }
+
+    @PutMapping("/update/{id}") // /cancel/id
+    public ResponseEntity<Delivery> updateStatusToCancelledById(@PathVariable("id") int deliveryId) {
+        Delivery deliveryToCancel = deliveryService.updateStatusToCancelledById(deliveryId);
+        if (deliveryToCancel == null) {
+            // Investigar controller advice para manejo de excepciones
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } else {
+            return new ResponseEntity<>(deliveryToCancel, HttpStatus.OK);
+        }
     }
 
     @DeleteMapping("/delete/{id}")

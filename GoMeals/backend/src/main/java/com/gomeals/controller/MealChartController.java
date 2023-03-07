@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/meal_chart")
 @CrossOrigin(origins = "http://localhost:3000")
+
 public class MealChartController {
     @Autowired
     MealChartService mealChartService;
@@ -18,6 +19,7 @@ public class MealChartController {
         return mealChartService.getMealChart(id);
     }
     @PostMapping ("/create")
+
     public String addMealChart(@RequestBody List<MealChart> mealChart){
         return mealChartService.addMealChart(mealChart);
     }

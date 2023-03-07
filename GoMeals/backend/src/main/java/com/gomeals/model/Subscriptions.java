@@ -2,11 +2,7 @@ package com.gomeals.model;
 
 import java.sql.Date;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "subscription")
@@ -20,11 +16,14 @@ public class Subscriptions {
 
 	private Date sub_date;
 
-	private int active_status;
+	@Column(name = "active_status")
+	private int activeStatus;
 
-	private int cust_id;
+	@Column(name = "cust_id")
+	private int customerId;
 
-	private int sup_id;
+	@Column(name = "sup_id")
+	private int supplierId;
 
 	public int getSub_id() {
 		return sub_id;
@@ -50,38 +49,38 @@ public class Subscriptions {
 		this.sub_date = sub_date;
 	}
 
-	public int getActive_status() {
-		return active_status;
+	public int getActiveStatus() {
+		return activeStatus;
 	}
 
-	public void setActive_status(int active_status) {
-		this.active_status = active_status;
+	public void setActiveStatus(int active_status) {
+		this.activeStatus = active_status;
 	}
 
-	public int getCust_id() {
-		return cust_id;
+	public int getCustomerId() {
+		return customerId;
 	}
 
-	public void setCust_id(int cust_id) {
-		this.cust_id = cust_id;
+	public void setCustomerId(int cust_id) {
+		this.customerId = cust_id;
 	}
 
-	public int getSup_id() {
-		return sup_id;
+	public int getSupplierId() {
+		return supplierId;
 	}
 
-	public void setSup_id(int sup_id) {
-		this.sup_id = sup_id;
+	public void setSupplierId(int sup_id) {
+		this.supplierId = sup_id;
 	}
 
-	public Subscriptions(int sub_id, int meals_remaining, Date sub_date, int active_status, int cust_id, int sup_id) {
+	public Subscriptions(int sub_id, int meals_remaining, Date sub_date, int activeStatus, int cust_id, int supplierId) {
 		super();
 		this.sub_id = sub_id;
 		this.meals_remaining = meals_remaining;
 		this.sub_date = sub_date;
-		this.active_status = active_status;
-		this.cust_id = cust_id;
-		this.sup_id = sup_id;
+		this.activeStatus = activeStatus;
+		this.customerId = cust_id;
+		this.supplierId = supplierId;
 	}
 
 	public Subscriptions() {
@@ -91,7 +90,7 @@ public class Subscriptions {
 	@Override
 	public String toString() {
 		return "Subscriptions [sub_id=" + sub_id + ", meals_remaining=" + meals_remaining + ", sub_date=" + sub_date
-				+ ", active_status=" + active_status + ", cust_id=" + cust_id + ", sup_id=" + sup_id + "]";
+				+ ", active_status=" + activeStatus + ", cust_id=" + customerId + ", sup_id=" + supplierId + "]";
 	}
 
 }
