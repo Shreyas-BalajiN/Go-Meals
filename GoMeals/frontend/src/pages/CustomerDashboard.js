@@ -1,7 +1,7 @@
 import React from 'react'
 import {Container, Nav, Navbar} from "react-bootstrap";
 
-export default function Dashboard() {
+export default function CustomerDashboard() {
   return (
 
     <div>
@@ -42,9 +42,9 @@ export default function Dashboard() {
 
 
 
-      <Navbar bg="primary" variant="light" className="justify-content-center align-items-center" >
-        <h3>©Go Meals</h3>
-      </Navbar>
+      {/*<Navbar bg="primary" variant="light" className="justify-content-center align-items-center" >*/}
+      {/*  <h3>©Go Meals</h3>*/}
+      {/*</Navbar>*/}
     </div>
 
   )
