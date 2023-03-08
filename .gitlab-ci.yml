@@ -1,0 +1,16 @@
+image: gradle:7.3.1-jdk17-alpine
+
+stages:
+  - build
+  - test
+
+build:
+  stage: build
+  script:
+    - cd GoMeals/backend
+    - echo "Starting build stage . . ."
+    - cat /etc/os-release
+    - chmod +x ./gradlew
+    - ./gradlew build
+    - java -version
+    - echo "Build complete!"

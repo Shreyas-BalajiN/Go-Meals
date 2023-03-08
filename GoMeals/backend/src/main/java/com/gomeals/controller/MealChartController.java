@@ -1,29 +1,34 @@
 package com.gomeals.controller;
-import com.gomeals.model.mealchart;
+import com.gomeals.model.MealChart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.gomeals.service.mealChartService;
-import com.gomeals.model.mealchartID;
+import com.gomeals.service.MealChartService;
+import com.gomeals.model.MealChartID;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/meal_chart")
-public class mealchartcontroller {
+@CrossOrigin(origins = "http://localhost:3000")
+
+public class MealChartController {
     @Autowired
-    mealChartService mealChartService;
+    MealChartService mealChartService;
     @GetMapping ("/get")
-    public mealchart getMealChart(@RequestBody mealchartID id){
+    public MealChart getMealChart(@RequestBody MealChartID id){
         return mealChartService.getMealChart(id);
     }
     @PostMapping ("/create")
-    public mealchart addMealChart(@RequestBody mealchart mealChart){
+
+    public String addMealChart(@RequestBody List<MealChart> mealChart){
         return mealChartService.addMealChart(mealChart);
     }
     @PutMapping("/update")
-    public mealchart updateMealChart(@RequestBody mealchart mealChart){
+    public MealChart updateMealChart(@RequestBody MealChart mealChart){
         return mealChartService.updateMealChart(mealChart);
     }
     @DeleteMapping("/delete")
-    public String deleteMealChart(@RequestBody mealchartID id){
+    public String deleteMealChart(@RequestBody MealChartID id){
         return mealChartService.deleteMealChart(id);
     }
 

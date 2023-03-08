@@ -16,4 +16,6 @@ public interface DeliveryService {
 
     List<Delivery> getByCustId(int id);
 
+    Delivery updateStatusToCancelledById(int id);
+
 }

@@ -143,6 +143,18 @@ function Register() {
                             Login
                           </NavLink>
                         </p>
+                        <p className="mb-0  text-center">
+                          Have a supplier account??{" "}
+                          {/* <Link to="/login">login</Link> */}
+                          <NavLink
+                              className=""
+                              activeClassName="is-active"
+                              to="/Supplierlogin"
+                              exact
+                          >
+                            Login
+                          </NavLink>
+                        </p>
                       </div>
                     </div>
                   </div>

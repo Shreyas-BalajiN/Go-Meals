@@ -49,7 +49,7 @@ public class ComplainController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteComplain(@PathVariable("id") Integer complainId){
+    public ResponseEntity<String> deleteComplain(@PathVariable("id") Integer complainId) {
         complainService.deleteComplain(complainId);
         return ResponseEntity.status(HttpStatus.OK).body("Complain was successfully deleted.\n");
     }
