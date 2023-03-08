@@ -9,9 +9,8 @@ build:
   script:
     - echo "Starting build stage . . ."
     - cat /etc/os-release
-    - cd ./GoMeals/backend
-    - chmod +x gradlew
-    - gradlew build
+    - chmod +x GoMeals/backend/gradlew
+    - GoMeals/backend/gradlew build
     - java -version
     - echo "Build complete!"
 
