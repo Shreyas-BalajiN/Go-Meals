@@ -48,7 +48,7 @@ public class SupplierServiceImplementation implements SupplierService {
     }
 
     public Supplier registerSupplier(Supplier supplier){
-      return  supplierRepository.save(supplier);
+        return  supplierRepository.save(supplier);
     }
 
     public Supplier updateSupplier(@RequestBody Supplier supplier){
