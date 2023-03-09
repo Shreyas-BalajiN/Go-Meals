@@ -10,6 +10,7 @@ function Register() {
   const [cust_email, setEmail] = useState("");
   const [cust_contact_number, setContactNumber] = useState("");
   const [cust_password, setCustPassword] = useState("");
+  const [cust_confirm_password, setCustConfirmPassword] = useState("");
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -21,23 +22,27 @@ function Register() {
       cust_card_details: "Default fake param",
       cust_contact_number: cust_contact_number,
       cust_password: cust_password,
+      cust_confirm_password: cust_confirm_password,
     };
+    if(cust_password === cust_confirm_password){
     axios
-      .post("http://localhost:8080/customer/create", user)
-      .then((response) => {
-        console.log(response.data);
-        navigate("/login");
-        alert("User registration was succesful");
-      })
-      .catch((error) => {
-        console.log(error);
-        if (error.response) {
-          const { data } = error.response;
-          alert(`Registration failed: ${data.message}`);
-        } else {
-          alert("Registration failed. Please try again later.");
-        }
-      });
+          .post("http://localhost:8080/customer/create", user)
+          .then((response) => {
+            console.log(response.data);
+            navigate("/login");
+            alert("User registration was succesful");
+          })
+          .catch((error) => {
+            console.log(error);
+            if (error.response) {
+              const { data } = error.response;
+              alert(`Registration failed: ${data.message}`);
+            } else {
+              alert("Registration failed. Please try again later.");
+            }
+          });}else{alert("Passwords do not match")}
+
+
   };
 
   return (
@@ -118,6 +123,8 @@ function Register() {
                           <Form.Control
                             type="password"
                             placeholder="Confirm password"
+                            value={cust_confirm_password}
+                            onChange={(e)=> setCustConfirmPassword(e.target.value)}
                           />
                         </Form.Group>
                         <Form.Group
