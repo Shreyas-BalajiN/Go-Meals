@@ -7,6 +7,7 @@ import CustomerDashboard from "./pages/CustomerDashboard";
 import SupplierLogin from "./pages/SupplierLogin";
 import SupplierDashboard from "./pages/SupplierDashboard";
 import React from "react";
+import CustomerProfile from "./pages/CustomerProfile";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/dashboard" element={<CustomerDashboard />} />
           <Route path="/supplierLogin" element={<SupplierLogin />} />
           <Route path="/supplierDashboard" element={<SupplierDashboard />} />
+          <Route path="/customerProfile" element={<CustomerProfile />} />
         </Routes>
       </Router>
     </div>

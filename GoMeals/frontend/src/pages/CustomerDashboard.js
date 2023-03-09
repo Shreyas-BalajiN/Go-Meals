@@ -12,7 +12,7 @@ export default function CustomerDashboard() {
           <Navbar.Brand href="#home">Go Meals</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Profile</Nav.Link>
+            <Nav.Link href="/customerProfile">Profile</Nav.Link>
             <Nav.Link href="#pricing">Customers</Nav.Link>
           </Nav>
         </Container>
