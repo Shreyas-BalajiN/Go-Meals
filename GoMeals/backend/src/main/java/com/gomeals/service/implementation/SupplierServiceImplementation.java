@@ -1,5 +1,6 @@
 package com.gomeals.service.implementation;
 import com.gomeals.model.Customer;
+import com.gomeals.model.Subscriptions;
 import com.gomeals.repository.CustomerRepository;
 import com.gomeals.repository.SubscriptionRepository;
 import com.gomeals.repository.supplierRepository;
@@ -31,12 +32,17 @@ public class SupplierServiceImplementation implements SupplierService {
         Supplier supplier = supplierRepository.findById(id).orElse(null);
         if(supplier != null){
             List<Customer> customers = new ArrayList<>();
+            List<Subscriptions> subscriptions = new ArrayList<>();
+
             subscriptionRepository.findSubscriptionsBySupplierIdAndActiveStatus(id,1).forEach(
                     subscribedCustomer -> {
                         Optional<Customer> customer = customerRepository.findById(subscribedCustomer.getCustomerId());
                         customers.add( unwrapCustomer(customer));
+                        // Store the subscription details
+                        subscriptions.add(subscribedCustomer);
                     });
             supplier.setCustomers(customers);
+            supplier.setSubscriptions(subscriptions);
         }
         return supplier;
     }
