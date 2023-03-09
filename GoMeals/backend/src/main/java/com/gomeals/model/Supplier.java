@@ -25,6 +25,8 @@ public class Supplier {
     private String password;
     @Transient
     private List<Customer> customers = new ArrayList<>();
+    @Transient
+    private List<Subscriptions> subscriptions= new ArrayList<>();
 
     //    @OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL, orphanRemoval = true)
     //    List<mealchart> supIdList= new ArrayList<>();
@@ -102,5 +104,12 @@ public class Supplier {
 
     public void setCustomers(List<Customer> customers) {
         this.customers = customers;
+    }
+
+    public List<Subscriptions> getSubscriptions() {
+        return subscriptions;
+    }
+    public void setSubscriptions(List<Subscriptions> subscriptions) {
+        this.subscriptions = subscriptions;
     }
 }
