@@ -50,3 +50,9 @@ h3{
     transform: rotate(360deg);
   }
 }
+
+.customerlist-table {
+  background-color: #efefef;
+  border-radius: 14px;
+  padding: 2%;
+}
