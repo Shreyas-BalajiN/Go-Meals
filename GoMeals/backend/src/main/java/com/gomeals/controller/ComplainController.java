@@ -13,8 +13,11 @@ import java.util.List;
 @RequestMapping("/complain")
 public class ComplainController {
 
-    @Autowired
-    ComplainService complainService;
+    private final ComplainService complainService;
+
+    public ComplainController(ComplainService complainService) {
+        this.complainService = complainService;
+    }
 
     @PostMapping("/create")
     public ResponseEntity<Complain> createComplain(@RequestBody Complain complain) {
