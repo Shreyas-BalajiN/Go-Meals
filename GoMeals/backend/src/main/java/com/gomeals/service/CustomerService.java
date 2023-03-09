@@ -5,7 +5,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public interface CustomerService {
     Customer createCustomer(Customer customer);
-    String loginCustomer(Customer customer, HttpServletResponse response);
+    Customer loginCustomer(Customer customer, HttpServletResponse response);
     Customer getCustomerById(int id);
 
 }

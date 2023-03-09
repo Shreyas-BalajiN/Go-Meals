@@ -28,5 +28,5 @@ public class CustomerController {
         return CustomerService.createCustomer(Customer);
     }
     @PostMapping("/login")
-    public String loginCustomer(@RequestBody Customer customer,HttpServletResponse response) { return CustomerService.loginCustomer(customer,response);}
+    public Customer loginCustomer(@RequestBody Customer customer,HttpServletResponse response) { return CustomerService.loginCustomer(customer,response);}
 }
