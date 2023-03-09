@@ -67,13 +67,14 @@ public class DeliveryServiceImplementation implements DeliveryService {
     @Override
     public Delivery updateDeliveryStatus(int id, String status) {
         Delivery delivery = deliveryRepository.findById(id).orElse(null);
-        String newStatus = status.toLowerCase();
         if (delivery == null) {
             return null;
         }
-        if( status == null || status.isEmpty()){
+        if(status == null || status.isEmpty()){
             return null;
         }
+
+        String newStatus = status.toLowerCase();
 
         if(!CANCELLED.getStatusName().equals(newStatus) &&
                 !COMPLETED.getStatusName().equals(newStatus)){
@@ -96,9 +97,9 @@ public class DeliveryServiceImplementation implements DeliveryService {
         // Modify the delivery status to either cancelled or completed
         if(CANCELLED.getStatusName().equals(newStatus)){
             delivery.setOrderStatus(CANCELLED.getStatusName());
-        }else if(COMPLETED.getStatusName().equals(newStatus)){
+        }else{
             // Update the remaining meals on the subscription table
-            subscription.setMeals_remaining(subscription.getMeals_remaining() -1);
+            subscription.setMeals_remaining(subscription.getMeals_remaining() - 1);
             delivery.setOrderStatus(COMPLETED.getStatusName());
         }
         // Saving changes to the delivery and the new sub meal count
