@@ -15,7 +15,7 @@ import java.util.List;
 public class SupplierController {
     @Autowired
     SupplierService supplierService;
-
+    @CrossOrigin
     @PostMapping("/create")
     public Supplier registerSupplier(@RequestBody Supplier supplier) {
         return supplierService.registerSupplier(supplier);

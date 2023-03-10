@@ -3,6 +3,8 @@ import { Button, Card, Col, FormGroup, Container, Row, Form, Nav, Navbar, Table,
 import axios from "axios";
 import { Label, Input } from 'reactstrap';
 import CustomerList from './CustomerList';
+import{Label,Input} from 'reactstrap';
+import NavbarComponent from '../components/NavbarComponent';
 
 export default function SupplierDashboard() {
     const [mealchart, showmealchart] = useState(false);
