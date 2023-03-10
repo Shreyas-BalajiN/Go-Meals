@@ -27,14 +27,14 @@ function Login() {
         if (response.status === 200) {
         console.log(response.data)
           const userData = {
-            ID: response.data.cust_id,
+            ...response.data,
             userType: 'customer'
           };
           const cookieValue = JSON.stringify(userData);
           cookies.set('loggedInUser', cookieValue, { path: '/' });
           navigate("/dashboard");
           const loggedInUser = cookies.get('loggedInUser');
-          console.log("current user's ID: " + loggedInUser.ID);
+          console.log("current user's ID: " + loggedInUser.cust_id);
           console.log("current user's type: " + loggedInUser.userType);
         }
       })
