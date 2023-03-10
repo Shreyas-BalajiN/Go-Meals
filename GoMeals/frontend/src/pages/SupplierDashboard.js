@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {Button,Card,Col,FormGroup,Container,Row,Form,Nav,Navbar} from 'react-bootstrap';
 import axios from "axios";
 import{Label,Input} from 'reactstrap';
+import NavbarComponent from '../components/NavbarComponent';
 
 export default function SupplierDashboard() {
     const [mealchart,showmealchart]=useState(false);
@@ -112,16 +113,7 @@ export default function SupplierDashboard() {
 
   return (
     <div>
-        <Navbar bg="primary" variant="light">
-            <Container>
-                <Navbar.Brand href="#home">Go Meals</Navbar.Brand>
-                <Nav className="me-auto">
-                    <Nav.Link href="#home">Home</Nav.Link>
-                    <Nav.Link href="#features">Profile</Nav.Link>
-                    <Nav.Link href="#pricing">Customers</Nav.Link>
-                </Nav>
-            </Container>
-        </Navbar>
+        <NavbarComponent />
         <br/>
     <h2 >Welcome Supplier</h2>
         <br/>
