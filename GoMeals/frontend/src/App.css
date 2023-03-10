@@ -58,6 +58,11 @@ h3{
 }
 
 .customer-profile {
+  background-color: #FFFFFF;
   text-align: left;
   padding: 2%;
+}
+
+.customer-profile-page {
+  background-color: #efefef;
 }

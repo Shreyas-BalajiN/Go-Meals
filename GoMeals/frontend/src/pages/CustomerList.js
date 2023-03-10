@@ -2,6 +2,14 @@ import React from "react";
 import { Container, Table } from "react-bootstrap";
 
 function CustomerList(props) {
+    props.customerList.forEach((customer) => {
+        props.subscriptionList.forEach((subscription) => {
+            if(subscription.customerId === customer.cust_id) {
+                customer.mealCount = subscription.meals_remaining
+            }
+        });
+    })
+
     return (
         <Container className="my-5 mx-auto customerlist-table">
             <Table>
@@ -20,7 +28,7 @@ function CustomerList(props) {
                                 <td>{index + 1}</td>
                                 <td>{customer.cust_fname + " " + customer.cust_lname}</td>
                                 <td>{customer.cust_contact_number}</td>
-                                <td>12</td>
+                                <td>{customer.mealCount}</td>
                             </tr>
                         );
                     })}

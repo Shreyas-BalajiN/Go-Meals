@@ -26,7 +26,8 @@ function CustomerProfile() {
     return (
         isLoading ? <Spinner /> :
             (
-                <div className="customer-profile">
+                <div className="customer-profile-page">
+                    <div className="container customer-profile">
                     <div className="row mb-2">
                         <div className="col-lg-8">
                             <h2 className="d-inline">Hi, </h2>
@@ -51,6 +52,7 @@ function CustomerProfile() {
                             <h4 className="d-inline">{customer.cust_contact_number}</h4>
                         </div>
                     </div>
+                </div>
                 </div>
             )
     );

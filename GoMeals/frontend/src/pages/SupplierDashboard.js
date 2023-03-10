@@ -10,6 +10,7 @@ export default function SupplierDashboard() {
     const [mealchart, showmealchart] = useState(false);
     const [showCustomerList, setShowCustomerList] = useState(false);
     const [customerList, setCustomerList] = useState([]);
+    const [subscriptionList, setSubscriptionlist] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const handleClick = () => {
         showmealchart(true);
@@ -130,6 +131,9 @@ export default function SupplierDashboard() {
                 setCustomerList(() => {
                     return response.data.customers;
                 });
+                setSubscriptionlist(() => {
+                    return response.data.subscriptions;
+                });
             })
             .catch((e) => {
                 alert("Error getting data" + e)
@@ -234,7 +238,7 @@ export default function SupplierDashboard() {
             </div>
             }
             {showCustomerList ?
-                (isLoading ? <Container className="my-5 mx-auto"><Spinner variant="primary" /></Container> : <CustomerList customerList={customerList} />) : null
+                (isLoading ? <Container className="my-5 mx-auto"><Spinner variant="primary" /></Container> : <CustomerList customerList={customerList} subscriptionList={subscriptionList} />) : null
             }
             <br />
             <br />
