@@ -10,6 +10,7 @@ import SupplierLogin from "./pages/SupplierLogin";
 import SupplierDashboard from "./pages/SupplierDashboard";
 import React from "react";
 import CustomerProfile from "./pages/CustomerProfile";
+import SupplierComplain from "./pages/SupplierComplain";
 
 function App() {
   return (
@@ -18,12 +19,13 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/SupplierRegister" element={<SupplierRegister />} />
+          <Route path="/supplierRegister" element={<SupplierRegister />} />
           <Route path="/" element={<Register />} />
           <Route path="/dashboard" element={<CustomerDashboard />} />
           <Route path="/supplierLogin" element={<SupplierLogin />} />
           <Route path="/supplierDashboard" element={<SupplierDashboard />} />
           <Route path="/customerProfile" element={<CustomerProfile />} />
+          <Route path="/supplierComplain" element={<SupplierComplain />}></Route>
         </Routes>
       </Router>
     </div>

@@ -1,17 +1,21 @@
 import React, { useState } from 'react'
-import { Button, Card, Col, FormGroup, Container, Row, Form, Nav, Navbar, Table, Spinner } from 'react-bootstrap';
+import { Button, Card, FormGroup, Container, Navbar, Spinner } from 'react-bootstrap';
 import axios from "axios";
 import { Label, Input } from 'reactstrap';
 import CustomerList from './CustomerList';
-import{Label,Input} from 'reactstrap';
+import { Cookies } from 'react-cookie';
 import NavbarComponent from '../components/NavbarComponent';
 
 export default function SupplierDashboard() {
+
     const [mealchart, showmealchart] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const [showCustomerList, setShowCustomerList] = useState(false);
     const [customerList, setCustomerList] = useState([]);
-    const [subscriptionList, setSubscriptionlist] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    const [subscriptionList, setSubscriptionList] = useState([]);
+    const cookies = new Cookies();
+    const loggedInUser = cookies.get('loggedInUser');
+    console.log("logged" + loggedInUser);
     const handleClick = () => {
         showmealchart(true);
     };
@@ -125,15 +129,14 @@ export default function SupplierDashboard() {
 
     function handleShowCustomers() {
         setIsLoading(true);
+        console.log("supId" + JSON.stringify(loggedInUser));
         axios
-            .get("http://localhost:8080/supplier/get/2")
+            .get(`http://localhost:8080/supplier/get/${loggedInUser.supId}`)
             .then((response) => {
                 setCustomerList(() => {
                     return response.data.customers;
                 });
-                setSubscriptionlist(() => {
-                    return response.data.subscriptions;
-                });
+                setSubscriptionList(response.data.subscriptions);
             })
             .catch((e) => {
                 alert("Error getting data" + e)
@@ -144,98 +147,89 @@ export default function SupplierDashboard() {
         setShowCustomerList(prevValue => {
             return !prevValue;
         });
-
     }
 
     return (
         <div>
-            <Navbar bg="primary" variant="light">
-                <Container>
-                    <Navbar.Brand href="#home">Go Meals</Navbar.Brand>
-                    <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#features">Profile</Nav.Link>
-                        <Nav.Link href="#pricing">Customers</Nav.Link>
-                    </Nav>
-                </Container>
-            </Navbar>
+            <NavbarComponent />
             <br />
             <h2 >Welcome Supplier</h2>
             <br />
             <Button variant="outline-primary" onClick={handleClick}>Create Meal Chart</Button>{' '}
-            <Button variant="outline-primary" onClick={handleShowCustomers}>Show Customers</Button>{' '}
-            {mealchart && <div><Card className="mechco">
-                <Card.Body>
-                    <h3>Meal Plan Details</h3>
-                    <table>
-                        <tr>
-                            <td>Monday:</td>
-                            <td><input type="text" id="monday1" /></td>
-                            <td><input type="text" id="monday2" /></td>
-                            <td><input type="text" id="monday3" /></td>
-                            <td><input type="text" id="monday4" /></td>
-                            <td><input type="text" id="monday5" /></td>
-                        </tr>
+            <Button variant="outline-primary" onClick={handleShowCustomers}>View Customers</Button>
+            {mealchart &&
+                <div><Card className="mechco">
+                    <Card.Body>
+                        <h3>Meal Plan Details</h3>
+                        <table>
+                            <tr>
+                                <td>Monday:</td>
+                                <td><input type="text" id="monday1" /></td>
+                                <td><input type="text" id="monday2" /></td>
+                                <td><input type="text" id="monday3" /></td>
+                                <td><input type="text" id="monday4" /></td>
+                                <td><input type="text" id="monday5" /></td>
+                            </tr>
+                            <br />
+                            <tr>
+                                <td>Tuesday:</td>
+                                <td><input type="text" id="tuesday1" /></td>
+                                <td><input type="text" id="tuesday2" /></td>
+                                <td><input type="text" id="tuesday3" /></td>
+                                <td><input type="text" id="tuesday4" /></td>
+                                <td><input type="text" id="tuesday5" /></td>
+                            </tr>
+                            <br />
+                            <tr>
+                                <td>Wednesday:</td>
+                                <td><input type="text" id="wednesday1" /></td>
+                                <td><input type="text" id="wednesday2" /></td>
+                                <td><input type="text" id="wednesday3" /></td>
+                                <td><input type="text" id="wednesday4" /></td>
+                                <td><input type="text" id="wednesday5" /></td>
+                            </tr>
+                            <br />
+                            <tr>
+                                <td>Thursday:</td>
+                                <td><input type="text" id="thursday1" /></td>
+                                <td><input type="text" id="thursday2" /></td>
+                                <td><input type="text" id="thursday3" /></td>
+                                <td><input type="text" id="thursday4" /></td>
+                                <td><input type="text" id="thursday5" /></td>
+                            </tr>
+                            <br />
+                            <tr>
+                                <td>Friday:</td>
+                                <td><input type="text" id="friday1" /></td>
+                                <td><input type="text" id="friday2" /></td>
+                                <td><input type="text" id="friday3" /></td>
+                                <td><input type="text" id="friday4" /></td>
+                                <td><input type="text" id="friday5" /></td>
+                            </tr>
+                            <br />
+                            <tr>
+                                <td>Saturday:</td>
+                                <td><input type="text" id="saturday1" /></td>
+                                <td><input type="text" id="saturday2" /></td>
+                                <td><input type="text" id="saturday3" /></td>
+                                <td><input type="text" id="saturday4" /></td>
+                                <td><input type="text" id="saturday5" /></td>
+                            </tr>
+                            <br />
+                            <tr>
+                                <td>Sunday:</td>
+                                <td><input type="text" id="sunday1" /></td>
+                                <td><input type="text" id="sunday2" /></td>
+                                <td><input type="text" id="sunday3" /></td>
+                                <td><input type="text" id="sunday4" /></td>
+                                <td><input type="text" id="sunday5" /></td>
+                            </tr>
+                        </table>
                         <br />
-                        <tr>
-                            <td>Tuesday:</td>
-                            <td><input type="text" id="tuesday1" /></td>
-                            <td><input type="text" id="tuesday2" /></td>
-                            <td><input type="text" id="tuesday3" /></td>
-                            <td><input type="text" id="tuesday4" /></td>
-                            <td><input type="text" id="tuesday5" /></td>
-                        </tr>
-                        <br />
-                        <tr>
-                            <td>Wednesday:</td>
-                            <td><input type="text" id="wednesday1" /></td>
-                            <td><input type="text" id="wednesday2" /></td>
-                            <td><input type="text" id="wednesday3" /></td>
-                            <td><input type="text" id="wednesday4" /></td>
-                            <td><input type="text" id="wednesday5" /></td>
-                        </tr>
-                        <br />
-                        <tr>
-                            <td>Thursday:</td>
-                            <td><input type="text" id="thursday1" /></td>
-                            <td><input type="text" id="thursday2" /></td>
-                            <td><input type="text" id="thursday3" /></td>
-                            <td><input type="text" id="thursday4" /></td>
-                            <td><input type="text" id="thursday5" /></td>
-                        </tr>
-                        <br />
-                        <tr>
-                            <td>Friday:</td>
-                            <td><input type="text" id="friday1" /></td>
-                            <td><input type="text" id="friday2" /></td>
-                            <td><input type="text" id="friday3" /></td>
-                            <td><input type="text" id="friday4" /></td>
-                            <td><input type="text" id="friday5" /></td>
-                        </tr>
-                        <br />
-                        <tr>
-                            <td>Saturday:</td>
-                            <td><input type="text" id="saturday1" /></td>
-                            <td><input type="text" id="saturday2" /></td>
-                            <td><input type="text" id="saturday3" /></td>
-                            <td><input type="text" id="saturday4" /></td>
-                            <td><input type="text" id="saturday5" /></td>
-                        </tr>
-                        <br />
-                        <tr>
-                            <td>Sunday:</td>
-                            <td><input type="text" id="sunday1" /></td>
-                            <td><input type="text" id="sunday2" /></td>
-                            <td><input type="text" id="sunday3" /></td>
-                            <td><input type="text" id="sunday4" /></td>
-                            <td><input type="text" id="sunday5" /></td>
-                        </tr>
-                    </table>
-                    <br />
-                    <Button variant="outline-primary" onClick={handleCreate}>Upload</Button>{' '}
-                </Card.Body>
-            </Card>
-            </div>
+                        <Button variant="outline-primary" onClick={handleCreate}>Upload</Button>{' '}
+                    </Card.Body>
+                </Card>
+                </div>
             }
             {showCustomerList ?
                 (isLoading ? <Container className="my-5 mx-auto"><Spinner variant="primary" /></Container> : <CustomerList customerList={customerList} subscriptionList={subscriptionList} />) : null
