@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface MealChartService {
     public MealChart getMealChart(MealChartID id);
+
     public String addMealChart(List<MealChart> mealChart);
 
     public MealChart updateMealChart(MealChart mealChart);
