@@ -50,3 +50,18 @@ h3{
     transform: rotate(360deg);
   }
 }
+.containers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10%;
+}
+
+.card-containers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-right: 10%;
+
+}
