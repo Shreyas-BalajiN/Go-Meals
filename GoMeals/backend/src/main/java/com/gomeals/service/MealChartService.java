@@ -9,6 +9,6 @@ public interface MealChartService {
 
     public String addMealChart(List<MealChart> mealChart);
 
-    public MealChart updateMealChart(MealChart mealChart);
+    public String updateMealChart(List<MealChart> mealChart);
     public String deleteMealChart(MealChartID id);
 }

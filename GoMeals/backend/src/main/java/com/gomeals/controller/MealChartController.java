@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import com.gomeals.service.MealChartService;
 import com.gomeals.model.MealChartID;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -25,9 +26,10 @@ public class MealChartController {
         return mealChartService.addMealChart(mealChart);
     }
     @PutMapping("/update")
-    public MealChart updateMealChart(@RequestBody MealChart mealChart){
+    public String updateMealChartList(@RequestBody List<MealChart> mealChart) {
         return mealChartService.updateMealChart(mealChart);
     }
+
     @DeleteMapping("/delete")
     public String deleteMealChart(@RequestBody MealChartID id){
         return mealChartService.deleteMealChart(id);

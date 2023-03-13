@@ -5,7 +5,10 @@ import{Label,Input} from 'reactstrap';
 
 export default function SupplierDashboard() {
     const [mealchart,showmealchart]=useState(false);
-    const handleClick=()=>{
+    const [alter,alterstate]=useState("create");
+    function handleClick(param){
+        console.log(param)
+        alterstate(param)
         showmealchart(true);
     };
     const handleCreate=()=> {
@@ -95,19 +98,35 @@ export default function SupplierDashboard() {
 
             },
             ]
-// item1:
-        axios
-            .post("http://localhost:8080/meal_chart/create", mealChart)
-            .then((response) => {
-                console.log(response.data);
-                alert("Data stored");
-                // navigate("/supplierDashboard");
+        if(alter=="create") {
+            axios
+                .post("http://localhost:8080/meal_chart/create", mealChart)
+                .then((response) => {
+                    console.log(response.data);
+                    alert("Data stored");
+                    // navigate("/supplierDashboard");
 
-            })
-            .catch((error) => {
-                console.log(error);
-                alert("Data was not sent");
-            });
+                })
+                .catch((error) => {
+                    console.log(error);
+                    alert("Data was not sent");
+                });
+        }
+        else{
+            axios
+                .put("http://localhost:8080/meal_chart/update", mealChart)
+                .then((response) => {
+                    console.log(response.data);
+                    alert("Data stored");
+                    // navigate("/supplierDashboard");
+
+                })
+                .catch((error) => {
+                    console.log(error);
+                    alert("Data was not sent");
+                    console.log(mealChart)
+                });
+        }
     };
 
   return (
@@ -125,7 +144,8 @@ export default function SupplierDashboard() {
         <br/>
     <h2 >Welcome Supplier</h2>
         <br/>
-    <Button variant="outline-primary" onClick={handleClick}>Create Meal Chart</Button>{' '}
+    <Button variant="outline-primary"  onClick={handleClick.bind(null,"create")}>Create Meal Chart</Button>{' '}
+        <Button variant="outline-primary" onClick={handleClick.bind(null,"update")}>Update Meal Chart</Button>{' '}
         {mealchart &&<div><Card className="mechco">
             <Card.Body>
                 <h3>Meal Plan Details</h3>
