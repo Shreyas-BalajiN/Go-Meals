@@ -50,6 +50,7 @@ h3{
     transform: rotate(360deg);
   }
 }
+<<<<<<< HEAD
 .containers {
   display: flex;
   justify-content: center;
@@ -65,3 +66,31 @@ h3{
   margin-right: 10%;
 
 }
+=======
+
+.customerlist-table {
+  background-color: #efefef;
+  border-radius: 14px;
+  padding: 2%;
+}
+
+.customer-profile {
+  text-align: left;
+  padding: 2%;
+  border: #efefef 0.5rem;
+  border-style: solid;
+  border-radius: 14px;
+}
+
+.customer-profile-page {
+  background-color: #efefef;
+}
+
+.profile-item {
+  padding: 1.5% 0%;
+}
+
+.profile-item hr {
+  margin: 1% 0% 1.5% 0%;
+}
+>>>>>>> e197afbdbadeb0e0015aec6c8b6af0104d5b1623

@@ -3,6 +3,8 @@ import {Button, Card, Container, Nav, Navbar} from "react-bootstrap";
 import axios from "axios";
 import food from "../resources/food.jpg"
 import {Modal} from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
+import NavbarComponent from "../components/NavbarComponent";
 
 export default function CustomerDashboard(children, func) {
     const [data,setdata]=useState({});
@@ -135,10 +137,6 @@ export default function CustomerDashboard(children, func) {
                     <Button variant="secondary" onClick={handleClick}>Close</Button>
                 </Modal.Footer>
             </Modal>}
-
-
-
-
             <br/>
             <br/>
             <br/>
