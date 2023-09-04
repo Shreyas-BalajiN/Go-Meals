@@ -50,23 +50,23 @@ h3{
     transform: rotate(360deg);
   }
 }
-<<<<<<< HEAD
-.containers {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 10%;
-}
+/*<<<<<<< HEAD*/
+/*.containers {*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+/*  margin-right: 10%;*/
+/*}*/
 
-.card-containers {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin-right: 10%;
+/*.card-containers {*/
+/*  display: flex;*/
+/*  flex-wrap: wrap;*/
+/*  justify-content: flex-start;*/
+/*  align-items: flex-start;*/
+/*  margin-right: 10%;*/
 
-}
-=======
+/*}*/
+/*=======*/
 
 .customerlist-table {
   background-color: #efefef;
@@ -93,4 +93,3 @@ h3{
 .profile-item hr {
   margin: 1% 0% 1.5% 0%;
 }
->>>>>>> e197afbdbadeb0e0015aec6c8b6af0104d5b1623

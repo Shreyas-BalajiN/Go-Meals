@@ -3,8 +3,8 @@ import {Button, Card, Container, Nav, Navbar} from "react-bootstrap";
 import axios from "axios";
 import food from "../resources/food.jpg"
 import {Modal} from "react-bootstrap";
-import { Container, Nav, Navbar } from "react-bootstrap";
 import NavbarComponent from "../components/NavbarComponent";
+import { Cookies } from 'react-cookie';
 
 export default function CustomerDashboard(children, func) {
     const [data,setdata]=useState({});
@@ -26,6 +26,9 @@ export default function CustomerDashboard(children, func) {
     }
     useEffect(() => {
         fetchdata()
+        const cookies = new Cookies();
+        const loggedInUser = cookies.get('loggedInUser');
+        console.log(loggedInUser);
     }, []);
 
     const handleClick=(param, e)=>{
